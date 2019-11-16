@@ -14,7 +14,7 @@ I could be completely wasting time in lieu of another solution... But I enjoyed 
 
 I will post the --help argument output below:
 
-Welcome to the Apple App BundleID finder.
+		Welcome to the Apple App BundleID finder.
 		-------------------------------------
 
 		This takes input from a CSV containing the names of apps you want a Bundle ID for.
