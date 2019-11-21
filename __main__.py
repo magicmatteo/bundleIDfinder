@@ -1,6 +1,7 @@
 
 from difflib import SequenceMatcher
 from bs4 import BeautifulSoup
+from urllib import request
 import requests, csv, sys, os
 
 if len(sys.argv) < 2:
@@ -36,9 +37,11 @@ if os.path.exists(sys.argv[1]):
 else:
 	print("File not found. Please enter a valid CSV filename.")
 
-apps = []
+#Check for http proxy settings
+systemProxy = request.getproxies()
 
 # Parse through CSV adding each entry to apps LIST.
+apps = []
 for row in reader:
 	apps.append(row[0])
 
@@ -66,7 +69,7 @@ for app in apps:
 
 	payload = {'search': appForURL, 'platform': 'iPadSoftware'}
 
-	r = requests.get('https://theappstore.org/search.php', params=payload, headers=h)
+	r = requests.get('https://theappstore.org/search.php', params=payload, headers=h, proxies=systemProxy)
 
 	soup = BeautifulSoup(r.text, 'html.parser')
 
