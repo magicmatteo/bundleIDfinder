@@ -43,11 +43,11 @@ def single_menu():
 	count = 0
 	while True:
 		if count == 0:
-			print('Welcome to the bundleIDfinder.. run bundleIDfinder --help for help.\nPlease choose from the following options:')
+			print('\nWelcome to the bundleIDfinder.. run bundleIDfinder --help for help.\nPlease choose from the following options:')
 			count =+ 1
-		selection = input('A: Add app to list\nD: Done adding apps\nQ: Quit\n')
+		selection = input('\nA: Add app to list\nD: Done adding apps\nQ: Quit\nSelection: ')
 		if selection.lower() == 'a':
-			a = input('Enter name of app: ')
+			a = input('\nEnter name of app: ')
 			apps.append(a)
 			print(f'{a} added')
 
