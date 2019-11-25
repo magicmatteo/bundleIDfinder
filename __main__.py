@@ -57,16 +57,7 @@ def single_menu():
 			sys.exit()
 		else: print('Please enter a valid response')
 
-program_mode()
-
-# Check for http proxy settings
-systemProxy = request.getproxies()
-
-# Declare apps list outside of loops
-apps = []
-
-# if CSV mode, Parse through CSV adding each entry to apps LIST.
-if mode == 'csv':
+def csv_reader():
 	if os.path.exists(sys.argv[2]):
 		reader = csv.reader(open(sys.argv[2]))
 		try:
@@ -80,7 +71,19 @@ if mode == 'csv':
 		print("File not found. Please enter a valid CSV filename.")
 		sys.exit()
 
+program_mode()
 
+# Check for http proxy settings
+systemProxy = request.getproxies()
+
+# Declare apps list outside of loops
+apps = []
+
+# if CSV mode, Parse through CSV adding each entry to apps LIST.
+if mode == 'csv':
+	csv_reader()
+
+#if single mode, present menu
 if mode == 'single':
 	single_menu()
 
@@ -122,7 +125,7 @@ for app in apps:
 
         s = SequenceMatcher(a=title, b=appToFind)
 
-        # Find anything that has a very high match ratio and create a dict of its values then
+        # Find anything that has a high match ratio and create a dict of its values then
         # append those to the matches list
         if s.ratio() > .70:
             match = {'title': title,
